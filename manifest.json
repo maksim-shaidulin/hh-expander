@@ -4,9 +4,11 @@
     "description": "Expand some textareas when editing resume on hh.ru",
     "manifest_version": 2,
     "permissions": ["activeTab", "declarativeContent"],
-    "background": {
-        "scripts": ["backgroundHhExpander.js"],
-        "persistent": false
-    },
-    "browser_action": {}
+    "content_scripts": [
+        {
+            "matches": ["https://*.hh.ru/applicant/resumes/edit/*"],
+            "js": ["contentScript.js"],
+            "run_at": "document_end"
+        }
+    ]
 }
